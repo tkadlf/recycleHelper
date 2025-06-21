@@ -39,37 +39,3 @@ async def upload_image(file: UploadFile = File(...)):
     
     # json 응답
     return JSONResponse(content=result)
-
-# detect.py
-from ultralytics import YOLO
-import numpy as np
-import cv2
-from typing import Dict, List
-
-modelPath = "app/best.pt"
-model = YOLO(modelPath)
-
-def detect_objects(image_bytes: bytes) -> Dict[str, List[dict]]:
-    # 바이트 → NumPy 배열 → OpenCV BGR 이미지
-    nparr = np.frombuffer(image_bytes, np.uint8)
-    bgr   = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
-    # YOLO 추론
-    results = model(bgr, verbose=False)
-
-    # 박스 정보 추출
-    detections = []
-    for r in results:
-        for box in r.boxes:
-            
-            confidence_value = round(box.conf[0].item(), 3)
-            class_id = int(box.cls[0])
-            class_name = model.names[class_id] if hasattr(model, 'names') and class_id < len(model.names) else str(class_id)
-
-            detections.append({
-                "class_id"  : class_id,
-                "class_name": class_name,
-                "confidence": confidence_value
-            })
-
-    return {"results": detections}
