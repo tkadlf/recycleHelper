@@ -1,0 +1,172 @@
+/* ❶ Asta Sans 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&display=swap');
+
+/* ❷ 기본 설정 + 가운데 정렬 */
+*{box-sizing:border-box;
+    margin:0;
+    padding:0}
+
+html,body{height:100%;
+    font-family:'Asta Sans',sans-serif;
+    flex-direction: column;
+    align-items: center;
+    background:#f5f5f5}
+
+body{display:flex;
+    justify-content:center;
+    align-items:center}
+
+/* 최상단 바 */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #27ae60;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 1000;
+  
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center;
+  padding: 24px 32px;
+  font-family: 'Asta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  gap: 80px; /* 이름과 메뉴 사이 간격 조절 */
+}
+
+/* 이름 텍스트 스타일 */
+.username {
+  user-select: none;
+  color: white;
+  font-size: 24px;
+}
+
+/* 네비 메뉴 */
+.nav-menu {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: #d4f0d7;
+}
+
+/* ❸ 카드 – fade‑up 애니메이션 */
+.container{
+    margin-bottom: 1em;
+    line-height: 1.6;
+  width:480px;
+  padding:40px 32px;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+  text-align:center;
+  animation:fadeUp .6s ease-out both;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ❹ 버튼 – 살짝 커지는 hover */
+button{
+  background:#27ae60; color:#fff; 
+  border:none; 
+  border-radius:10px;
+  padding:12px 24px; 
+  margin: 16px;
+  font-size:16px; cursor:pointer; 
+  transition:.25s;
+}
+button:hover{transform:scale(1.05);background:#219150}
+
+.file-label {
+  display: inline-block;
+  background-color: #2ecc71;
+  color: white;
+  margin-top: 16px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.25s, transform 0.25s;
+  margin-bottom: 12px;
+}
+
+.file-label:hover {
+  background-color: #27ae60;
+  transform: scale(1.05);
+}
+
+.file-selected {
+  background-color: #16a085 !important;
+}
+
+/* ❺ 결과 박스 */
+#results{
+  margin-top:32px;
+  background:#ecf0f1;
+  border-radius:12px;
+  padding:20px;
+  font-size:18px;
+  min-height:80px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ❻ 결과 이미지 */
+#results img{
+    max-width:100%;
+    border:1px solid #ccc;
+    border-radius:10px;
+    margin:14px
+}
+
+/* ❼ 로딩 스피너 */
+.loader{
+  width:48px;height:48px;border:6px solid #bbb;border-top-color:#27ae60;
+  border-radius:50%;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* 탭 메뉴 링크 스타일: 활성화시 밑줄 표시 등 */
+.nav-menu .tab-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+}
+
+.nav-menu .tab-link.active {
+  border-bottom: 2px solid #d4f0d7;
+  color: #d4f0d7;
+}
+
+.nav-menu .tab-link:hover {
+  color: #d4f0d7;
+}

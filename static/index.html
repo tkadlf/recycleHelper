@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>분리수거 도우미</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <span class="username">30801 김경민 동아리 활동</span>
+      <nav class="nav-menu">
+        <a href="#" class="tab-link active" data-tab="home">홈</a>
+        <a href="#" class="tab-link" data-tab="helper">도우미</a>
+        <a href="#" class="tab-link" data-tab="info">정보</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 홈 탭 -->
+    <section id="home" class="tab-content active">
+      <h1>분리수거 도우미에 오신 것을 환영합니다!</h1>
+      <p>이 사이트는 YOLOv8 기반 실시간 객체 인식으로 쓰레기 분리수거를 돕습니다.</p>
+    </section>
+
+    <!-- 도우미 탭 -->
+    <section id="helper" class="tab-content">
+      <h1>분리수거 도우미</h1>
+      <form id="uploadForm">
+        <input type="file" id="fileInput" accept="image/*" required hidden>
+        <label for="fileInput" class="file-label" id="fileLabel"> 파일 선택</label>
+        <br>
+        <button type="submit">업로드 및 분석</button>
+      </form>
+      <div id="results"></div>
+    </section>
+
+    <!-- 정보 탭 -->
+    <section id="info" class="tab-content">
+      <h2>정보</h2>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
