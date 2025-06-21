@@ -8,6 +8,7 @@ RUN groupadd -g $GID appuser && useradd -u $UID -g $GID -m appuser
 
 RUN apt-get update && apt-get install -y libgl1
 
+RUN pip list | grep opencv
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
