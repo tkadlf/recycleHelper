@@ -38,4 +38,8 @@ async def upload_image(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=f"추론 오류: {e}")
     
     # json 응답
+<<<<<<< HEAD
     return JSONResponse(content=result)
+=======
+    return JSONResponse(content=result)
+>>>>>>> dd3e6cbc4a7fe61057a036a0857e099bc3d6ab63
