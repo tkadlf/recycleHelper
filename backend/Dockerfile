@@ -6,7 +6,7 @@ ARG UID=1000
 ARG GID=1000
 RUN groupadd -g $GID appuser && useradd -u $UID -g $GID -m appuser
 
-RUN apt-get update && apt-get install -y libgl1
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
 
 RUN pip list | grep opencv
 COPY backend/requirements.txt .
