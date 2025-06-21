@@ -8,7 +8,7 @@ RUN groupadd -g $GID appuser && useradd -u $UID -g $GID -m appuser
 
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install ultralytics --no-deps
+RUN pip install --no-deps ultralytics
 
 COPY backend/add/ /app/backend/add/
 COPY backend/requirements.txt /app/backend/
