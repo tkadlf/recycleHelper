@@ -40,11 +40,11 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
   resultsDiv.textContent = "분석 중...";
 
   const formData = new FormData();
-  formData.append("file", file);
+  formData.append("file", fileInput.files[0]);
 
   try {
-    const response = await fetch("https://port-0-recyclehelper-mc6bfp4j49e95a8d.sel5.cloudtype.app/upload", {
-      method: "POST",
+    const response = await fetch("http://127.0.0.1:8000/upload", {
+      method: "post",
       body: formData,
     });
 
@@ -56,7 +56,7 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
     displayResult(data);
   } catch (err) {
     resultsDiv.textContent = "분석 중 오류가 발생했습니다.";
-    console.error(err);
+    console.error("에러 상세 : ", err);
   }
 });
 

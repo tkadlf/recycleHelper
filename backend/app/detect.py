@@ -4,9 +4,11 @@ import numpy as np
 import cv2
 from typing import Dict, List, Tuple
 import base64
+from pathlib import Path
 
-modelPath = "app/best.pt"
-model = YOLO(modelPath)
+model_path = Path(__file__).parent / "best.pt"
+model = YOLO(str(model_path))
+model.to('cpu')
 
 def detect_objects(image_bytes: bytes) -> Dict[str, List[dict]]:
     # 바이트 → NumPy 배열 → OpenCV BGR 이미지
@@ -18,6 +20,7 @@ def detect_objects(image_bytes: bytes) -> Dict[str, List[dict]]:
 
     detections = []
     annotated_frame = bgr.copy()
+    results[0].plot()
 
     # 박스 정보 추출
     detections = []
@@ -42,12 +45,12 @@ def detect_objects(image_bytes: bytes) -> Dict[str, List[dict]]:
             cv2.putText(annotated_frame, label, (x1, y1 - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
             
-    # 이미지 PNG로 인코딩
+     #이미지 PNG로 인코딩
     success, encoded_image = cv2.imencode('.png', annotated_frame)
     if not success:
         raise RuntimeError("이미지 인코딩 실패")
     
-    # Base64 인코딩 (bytes → base64 string)
+     #Base64 인코딩 (bytes → base64 string)
     img_base64 = base64.b64encode(encoded_image).decode('utf-8')
 
     return {"results": detections,
