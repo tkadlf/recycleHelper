@@ -43,7 +43,7 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
   formData.append("file", fileInput.files[0]);
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/upload", {
+    const response = await fetch("https://port-0-recyclehelper-mc6bfp4j49e95a8d.sel5.cloudtype.app/upload", {
       method: "post",
       body: formData,
     });
