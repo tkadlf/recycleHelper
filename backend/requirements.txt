@@ -4,5 +4,5 @@ uvicorn[standard]
 torch==2.0.1
 ultralytics
 opencv-python-headless
-numpy
+numpy==1.24.4
 python-multipart
