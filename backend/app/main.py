@@ -61,6 +61,7 @@ def detect_objects(image_bytes: bytes) -> Dict[str, List[dict]]:
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+import traceback
 
 app = FastAPI(title="YOLOv8 Recycle Helper API")
 
@@ -93,6 +94,7 @@ async def upload_image(file: UploadFile = File(...)):
     try:
         result = detect_objects(image_bytes)
     except Exception as e:
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"추론 오류: {e}")
     
     # json 응답
